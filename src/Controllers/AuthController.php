@@ -4,7 +4,7 @@ namespace Aptika\SsoGorontalo\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Aptika\SsoGorontalo\SSO;
+use Aptika\SsoGorontalo\Models\SSO;
 
 class AuthController extends Controller
 {

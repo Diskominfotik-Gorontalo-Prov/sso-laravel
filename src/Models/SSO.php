@@ -1,13 +1,15 @@
 <?php
 
-namespace Aptika\SsoGorontalo;
+namespace Aptika\SsoGorontalo\Models;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
-class SSO
+class SSO extends Model
 {
     private function sinkronUserSSO($token)
     {
