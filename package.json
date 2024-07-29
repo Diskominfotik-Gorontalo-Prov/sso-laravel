@@ -1,0 +1,19 @@
+{
+  "name": "sso-gorontalo",
+  "version": "1.0.3",
+  "description": "Untuk membuat dokumentasi yang baik untuk package custom SSO Anda, Anda harus menyertakan informasi penting tentang cara instalasi, penggunaan, konfigurasi, dan contoh-contoh kode. Dokumentasi ini biasanya diletakkan di file `README.md` di root proyek Anda. Berikut adalah contoh template untuk dokumentasi package Anda:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Diskominfotik-Gorontalo-Prov/sso-laravel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Diskominfotik-Gorontalo-Prov/sso-laravel/issues"
+  },
+  "homepage": "https://github.com/Diskominfotik-Gorontalo-Prov/sso-laravel#readme"
+}
