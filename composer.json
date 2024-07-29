@@ -1,0 +1,22 @@
+{
+    "name": "aptika/sso-gorontalo",
+    "description": "SSO gorontalo prov",
+    "type": "library",
+    "require": {
+        "php": ">=7.4",
+        "guzzlehttp/guzzle": "^7.0",
+        "illuminate/support": "^8.0|^9.0|^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Aptika\\SsoGorontalo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nama Anda",
+            "email": "email@domain.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
