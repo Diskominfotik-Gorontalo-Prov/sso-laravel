@@ -21,8 +21,8 @@ class AuthController extends Controller
         $sso = new SSO();
         $cek = $sso->oauthGetToken($request->code);
         if (!$cek) {
-            return redirect(route('voyager.login'))->with('error', 'Gagal Login');
+            return redirect(route(config('aptika-sso.route-login')))->with('error', 'Gagal Login');
         }
-        return redirect(route('voyager.dashboard'))->with('success', 'Berhasil Login');
+        return redirect(route(config('aptika-sso.route-dasboard')))->with('success', 'Berhasil Login');
     }
 }
