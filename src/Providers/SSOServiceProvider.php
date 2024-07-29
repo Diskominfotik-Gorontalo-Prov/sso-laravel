@@ -12,14 +12,14 @@ class SSOServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
         $this->publishes([
-            __DIR__ . '/../config/aptika-sso.php' => config_path('aptika-sso.php'),
+            dirname(__DIR__) . '/../publishable/config/aptika-sso.php' => config_path('aptika-sso.php'),
         ], 'config');
     }
 
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/aptika-sso.php',
+            dirname(__DIR__). '/../publishable/config/aptika-sso.php',
             'aptika-sso'
         );
     }

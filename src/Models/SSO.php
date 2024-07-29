@@ -11,8 +11,10 @@ use App\Models\User;
 
 class SSO extends Model
 {
+
     private function sinkronUserSSO($token)
     {
+        $namespacePrefix = '\\' . config('aptika-sso.model.user') . '\\';
         try {
             $client = new Client();
             $headers = [
@@ -24,26 +26,29 @@ class SSO extends Model
             $request = $client->request('GET', env("RESOURCE_URL"),  $options);
             $data =  $request->getBody(); // Cetak permintaan HTTP untuk di-debug
             $dataJson = json_decode($data, true);
-            $dataUser = User::where('email', $dataJson['email'])->first();
+            $dataUser = $namespacePrefix::where(
+                config("aptika-sso.data_resource.email"),
+                $dataJson['email']
+            )->first();
             if (!$dataUser) {
-                $dataUser = User::create([
-                    'email' => $dataJson['email'],
-                    'name' => $dataJson['nama'],
-                    'avatar' => $dataJson['gambar'],
+                $dataUser = $namespacePrefix::create([
+                    config("aptika-sso.data_resource.email") => $dataJson['email'],
+                    config("aptika-sso.data_resource.nama") => $dataJson['nama'],
+                    config("aptika-sso.data_resource.gambar") => $dataJson['gambar'],
                     'email_verified_at' => now(),
-                    'nip' => $dataJson['nip'],
-                    'unor' => $dataJson['unorid'],
-                    'nomor' => $dataJson['nomor'],
+                    config("aptika-sso.data_resource.nip") => $dataJson['nip'],
+                    config("aptika-sso.data_resource.unorid") => $dataJson['unorid'],
+                    config("aptika-sso.data_resource.nomor") => $dataJson['nomor'],
                     'password' => "",
                 ]);
             } else {
                 $dataUser->update([
-                    'email' => $dataJson['email'],
-                    'name' => $dataJson['nama'],
-                    'avatar' => $dataJson['gambar'],
-                    'nip' => $dataJson['nip'],
-                    'unor' => $dataJson['unorid'],
-                    'nomor' => $dataJson['nomor'],
+                    config("aptika-sso.data_resource.email") => $dataJson['email'],
+                    config("aptika-sso.data_resource.name") => $dataJson['nama'],
+                    config("aptika-sso.data_resource.gambar") => $dataJson['gambar'],
+                    config("aptika-sso.data_resource.nip") => $dataJson['nip'],
+                    config("aptika-sso.data_resource.unorid") => $dataJson['unorid'],
+                    config("aptika-sso.data_resource.nomor") => $dataJson['nomor'],
                     'password' => "",
                 ]);
             }
