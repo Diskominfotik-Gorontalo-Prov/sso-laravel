@@ -33,9 +33,11 @@ return [
 ];
 
 ```
+Jalankan Perintah
 ```bash
 php artisan vendor:publish --provider="Aptika\SsoGorontalo\Providers\SSOServiceProvider" --tag=config
 ```
+Update File `config/aptika-sso.php`
 
 2. **Konfigurasi Environment**:
 
@@ -61,7 +63,7 @@ Package ini menyediakan dua endpoint:
 
 ### Controller
 
-Controller yang digunakan untuk mengelola SSO adalah `AuthController` yang berada di namespace `Aptika\SsoGorontalo\Controllers`.
+Controller yang digunakan untuk mengelola SSO adalah `AuthController.php` yang berada di namespace `Aptika\SsoGorontalo\Controllers`.
 
 
 ```bash
@@ -72,8 +74,4 @@ composer dump-autoload
 ## Kontribusi
 
 Jika Anda ingin berkontribusi pada package ini, silakan fork repository ini dan buat pull request.
-
-## Lisensi
-
-Package ini dirilis di bawah lisensi [MIT](LICENSE).
 
