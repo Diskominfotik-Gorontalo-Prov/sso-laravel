@@ -1,5 +1,3 @@
-
-```markdown
 # Custom SSO Package Provinsi Gorontalo
 [SSO Gorontalo](https://sso.gorontaloprov.go.id)
 
