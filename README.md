@@ -1,8 +1,11 @@
-# Custom SSO Package Provinsi Gorontalo
+[![Latest Stable Version](http://poser.pugx.org/aptika/sso-gorontalo/v)](https://packagist.org/packages/aptika/sso-gorontalo) [![Total Downloads](http://poser.pugx.org/aptika/sso-gorontalo/downloads)](https://packagist.org/packages/aptika/sso-gorontalo) [![Latest Unstable Version](http://poser.pugx.org/aptika/sso-gorontalo/v/unstable)](https://packagist.org/packages/aptika/sso-gorontalo) [![License](http://poser.pugx.org/aptika/sso-gorontalo/license)](https://packagist.org/packages/aptika/sso-gorontalo) [![PHP Version Require](http://poser.pugx.org/aptika/sso-gorontalo/require/php)](https://packagist.org/packages/aptika/sso-gorontalo)
+
+
+# Custom SSO-client Package Provinsi Gorontalo
 [SSO Gorontalo](https://sso.gorontaloprov.go.id)
 
 Custom SSO package untuk mengintegrasikan Single Sign-On di aplikasi Laravel.
-
+Install the package through [Composer](http://getcomposer.org/).
 ## Instalasi
 
 Untuk menginstal package ini, gunakan Composer:
