@@ -3,5 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Aptika\SsoGorontalo\Controllers\AuthController;
 
-Route::get('login/sso', [AuthController::class, 'sso'])->name('login.sso');
-Route::get('callback', [AuthController::class, 'callback'])->name('callback.sso');
+Route::middleware(['web'])->group(function () {
+    // Your routes
+    Route::get('login/sso', [AuthController::class, 'sso'])->name('aptika.sso.login');
+    Route::get('callback', [AuthController::class, 'callback'])->name('aptika.sso.callback');
+});

@@ -5,6 +5,7 @@ namespace Aptika\SsoGorontalo\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Aptika\SsoGorontalo\Models\SSO;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -23,6 +24,6 @@ class AuthController extends Controller
         if (!$cek) {
             return redirect(route(config('aptika-sso.route-login')))->with('error', 'Gagal Login');
         }
-        return redirect(route(config('aptika-sso.route-dasboard')))->with('success', 'Berhasil Login');
+        return redirect(route(config('aptika-sso.route-dashboard')))->with('success', 'Berhasil Login');
     }
 }

@@ -6,15 +6,12 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
 
-class SSO extends Model
+class SSO
 {
 
     private function sinkronUserSSO($token)
     {
-        $namespacePrefix = '\\' . config('aptika-sso.model.user') . '\\';
         try {
             $client = new Client();
             $headers = [
@@ -23,37 +20,36 @@ class SSO extends Model
             $options = [
                 'headers' => $headers,
             ];
-            $request = $client->request('GET', env("RESOURCE_URL"),  $options);
+            $request = $client->request('GET', config('aptika-sso.resource_url'),  $options);
             $data =  $request->getBody(); // Cetak permintaan HTTP untuk di-debug
             $dataJson = json_decode($data, true);
-            $dataUser = $namespacePrefix::where(
+            $dataUser = app(config('aptika-sso.model.user'))->where(
                 config("aptika-sso.data_resource.email"),
                 $dataJson['email']
             )->first();
+
             if (!$dataUser) {
-                $dataUser = $namespacePrefix::create([
-                    config("aptika-sso.data_resource.email") => $dataJson['email'],
-                    config("aptika-sso.data_resource.nama") => $dataJson['nama'],
-                    config("aptika-sso.data_resource.gambar") => $dataJson['gambar'],
-                    'email_verified_at' => now(),
-                    config("aptika-sso.data_resource.nip") => $dataJson['nip'],
-                    config("aptika-sso.data_resource.unorid") => $dataJson['unorid'],
-                    config("aptika-sso.data_resource.nomor") => $dataJson['nomor'],
-                    'password' => "",
-                ]);
+                $dataTampungResource = [];
+                $configresource = config("aptika-sso.data_resource");
+                foreach ($configresource as $key1 => $value1) {
+                    $dataTampungResource[$key1] =  $dataJson[$value1];
+                }
+                $dataTampungResource['email_verified_at'] =  now();
+                $dataTampungResource['password'] =  '';
+                $dataUser = app(config('aptika-sso.model.user'))->create($dataTampungResource);
             } else {
-                $dataUser->update([
-                    config("aptika-sso.data_resource.email") => $dataJson['email'],
-                    config("aptika-sso.data_resource.name") => $dataJson['nama'],
-                    config("aptika-sso.data_resource.gambar") => $dataJson['gambar'],
-                    config("aptika-sso.data_resource.nip") => $dataJson['nip'],
-                    config("aptika-sso.data_resource.unorid") => $dataJson['unorid'],
-                    config("aptika-sso.data_resource.nomor") => $dataJson['nomor'],
-                    'password' => "",
-                ]);
+                $dataTampungResourceUpdate = [];
+                $configresource = config("aptika-sso.data_resource_update");
+                foreach ($configresource as $key1 => $value1) {
+                    $dataTampungResourceUpdate[$key1] =  $dataJson[$value1];
+                }
+                $dataTampungResourceUpdate['password'] =  '';
+                $dataUser->update($dataTampungResourceUpdate);
             }
 
-            Auth::login($dataUser);
+            if (Auth::guest()) {
+                Auth::login($dataUser);
+            }
             return true;
         } catch (ClientException $e) {
             $response = $e->getResponse();
@@ -72,14 +68,14 @@ class SSO extends Model
             $options = [
                 'headers' => $headers,
                 'form_params' => [
-                    'client_id' => env('CLIENT_ID'),
-                    'client_secret' => env('CLIENT_SECRET'),
-                    'redirect_uri' => env("REDIRECT_URL"),
+                    'client_id' => config('aptika-sso.client_id'),
+                    'client_secret' => config('aptika-sso.client_secret'),
+                    'redirect_uri' => config('aptika-sso.redirect_url'),
                     'code' => $code,
                     'grant_type' => 'authorization_code'
                 ]
             ];
-            $request = $client->request('POST', env("ACCESS_TOKEN_URL"),  $options);
+            $request = $client->request('POST', config('aptika-sso.access_token_url'),  $options);
             $data =  $request->getBody(); // Cetak permintaan HTTP untuk di-debug
             $dataJson = json_decode($data, true);
             $access_token =  $dataJson['access_token'];
@@ -96,9 +92,9 @@ class SSO extends Model
         $state = Str::random(40);
         $query = http_build_query([
             'response_type' => 'code',
-            'client_id' => env('CLIENT_ID'),
-            'redirect_uri' => env("REDIRECT_URL"),
+            'client_id' => config('aptika-sso.client_id'),
+            'redirect_uri' => config('aptika-sso.redirect_url'),
         ]);
-        return redirect(env('AUTHORIZATION_URL') . '?' . $query);
+        return redirect(config('aptika-sso.authorization_url') . '?' . $query);
     }
 }
