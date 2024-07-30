@@ -1,6 +1,6 @@
 {
     "name": "aptika/sso-gorontalo",
-    "description": "SSO gorontalo prov",
+    "description": "SSO Provinsi Gorontalo",
     "type": "library",
     "require": {
         "php": ">=7.4",
@@ -19,5 +19,10 @@
         }
     ],
     "minimum-stability": "stable",
-    "license": "MIT"
+    "license": "MIT",
+    "homepage": "https://sso.gorontaloprov.go.id",
+    "support": {
+        "issues": "https://github.com/Diskominfotik-Gorontalo-Prov/sso-laravel/issues",
+        "source": "https://github.com/Diskominfotik-Gorontalo-Prov/sso-laravel"
+    }
 }
