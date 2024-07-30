@@ -67,6 +67,10 @@ Package ini menyediakan dua endpoint:
 
 Controller yang digunakan untuk mengelola SSO adalah `AuthController` yang berada di namespace `Aptika\SsoGorontalo\Controllers`.
 
+
+```bash
+composer dump-autoload
+```
 ### Contoh Penggunaan di Controller
 
 Anda dapat menggunakan controller ini langsung di routes Anda atau memodifikasi sesuai kebutuhan.
