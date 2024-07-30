@@ -1,9 +1,7 @@
-Untuk membuat dokumentasi yang baik untuk package custom SSO Anda, Anda harus menyertakan informasi penting tentang cara instalasi, penggunaan, konfigurasi, dan contoh-contoh kode. Dokumentasi ini biasanya diletakkan di file `README.md` di root proyek Anda. Berikut adalah contoh template untuk dokumentasi package Anda:
-
-### README.md
 
 ```markdown
-# Custom SSO Package
+# Custom SSO Package Provinsi Gorontalo
+[SSO Gorontalo](https://sso.gorontaloprov.go.id)
 
 Custom SSO package untuk mengintegrasikan Single Sign-On di aplikasi Laravel.
 
@@ -60,7 +58,7 @@ APTIKA_SSO_APP_URL=url-sso
 
 Package ini menyediakan dua endpoint:
 
-- **Login SSO**: `/login/sso`
+- **Login SSO**: `/login/sso-gorontalo`
 - **Callback**: `/callback`
 
 ### Controller
@@ -71,9 +69,6 @@ Controller yang digunakan untuk mengelola SSO adalah `AuthController` yang berad
 ```bash
 composer dump-autoload
 ```
-### Contoh Penggunaan di Controller
-
-Anda dapat menggunakan controller ini langsung di routes Anda atau memodifikasi sesuai kebutuhan.
 
 
 ## Kontribusi
