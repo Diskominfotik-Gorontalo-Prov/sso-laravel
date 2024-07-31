@@ -7,7 +7,7 @@
 Custom SSO package untuk mengintegrasikan Single Sign-On di aplikasi Laravel.
 Install the package through [Composer](http://getcomposer.org/).
 
-## Instalasi
+## Installasi
 
 Untuk menginstall package ini, gunakan Composer:
 
@@ -62,8 +62,26 @@ APTIKA_SSO_CLIENT_SECRET=client-secret
 ```env
 APTIKA_SSO_APP_URL=url-sso
 ```
-## Penggajuan APTIKA_SSO_CLIENT_ID dan APTIKA_SSO_CLIENT_SECRET silakan request di aplikasi [Layanan](https://layanan.gorontaloprov.go.id/) 
 
+
+## Penggajuan APTIKA_SSO_CLIENT_ID dan APTIKA_SSO_CLIENT_SECRET silakan request di aplikasi [Layanan](https://layanan.gorontaloprov.go.id/) 
+untuk pengujian development
+
+```env
+...
+
+APP_URL="http://localhost:8001"
+APTIKA_SSO_CLIENT_ID=10
+APTIKA_SSO_CLIENT_SECRET="dCOWTcxFlRdeGnJZ1kRmGq41F25HB7jIFX1iHgde"
+APTIKA_SSO_APP_URL="https://dev1.gorontaloprov.go.id"
+
+...
+
+```
+### Jalankan aplikasi di server port 8001
+```bash
+php artisan serve --port=8001
+```
 
 ### Routes
 
