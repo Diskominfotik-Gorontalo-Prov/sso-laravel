@@ -9,7 +9,7 @@ Install the package through [Composer](http://getcomposer.org/).
 
 ## Instalasi
 
-Untuk menginstal package ini, gunakan Composer:
+Untuk menginstall package ini, gunakan Composer:
 
 ```sh
 composer require aptika/sso-gorontalo
@@ -29,8 +29,7 @@ Tambahkan service provider ke dalam array `providers` di file `config/app.php`:
 ],
 ```
 
-dan untuk laravel <= 11
-Laravel 11
+dan untuk laravel >= 11
 `bootstrap/providers.php`
 
 ```php
@@ -63,8 +62,8 @@ APTIKA_SSO_CLIENT_SECRET=client-secret
 ```env
 APTIKA_SSO_APP_URL=url-sso
 ```
+## Penggajuan APTIKA_SSO_CLIENT_ID dan APTIKA_SSO_CLIENT_SECRET silakan request di aplikasi [Layanan](https://layanan.gorontaloprov.go.id/) 
 
-## Penggunaan
 
 ### Routes
 
@@ -93,7 +92,7 @@ Package ini menyediakan dua endpoint:
 ```php
 
  Auth::logout();
- //  ... tambhkan fungi di bawah ini saat melkukan logout
+ //  ... tambhkan fungi di bawah ini saat melakukan logout
  return redirect(config('aptika-sso.logout_url') . '?redirect=' . route(config('aptika-sso.route-login')));
 ```
 ---
