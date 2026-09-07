@@ -5,7 +5,7 @@
 
 [SSO Gorontalo](https://sso.gorontaloprov.go.id)
 
-Custom SSO package untuk mengintegrasikan Single Sign-On di aplikasi Laravel. Install package ini melalui [Composer](http://getcomposer.org/).
+Custom SSO package untuk mengintegrasikan Single Sign-On di aplikasi Laravel 13. Package ini mendukung Guzzle 7 dan 8. Install package ini melalui [Composer](http://getcomposer.org/).
 
 
 ## Instalasi
@@ -20,16 +20,8 @@ composer require aptika/sso-gorontalo
 
 1. **Tambahkan Service Provider**:
 
-   Untuk Laravel < 11, tambahkan service provider ke dalam array `providers` di file `config/app.php`:
-
-   ```php
-   'providers' => [
-       // ...
-       Aptika\SsoGorontalo\Providers\SSOServiceProvider::class,
-   ],
-   ```
-
-   Untuk Laravel >= 11, tambahkan di `bootstrap/providers.php`:
+   Provider akan terdaftar otomatis melalui Laravel package discovery. Jika package discovery
+   dinonaktifkan, tambahkan provider di `bootstrap/providers.php`:
 
    ```php
    return [
@@ -58,12 +50,13 @@ composer require aptika/sso-gorontalo
    APTIKA_SSO_APP_URL=url-sso
    ```
 
-   Untuk pengujian development, gunakan konfigurasi berikut:
+   Untuk pengujian development, gunakan konfigurasi berikut dan isi secret dengan nilai
+   yang diberikan oleh layanan SSO:
 
    ```env
    APP_URL="http://localhost:8001"
    APTIKA_SSO_CLIENT_ID=10
-   APTIKA_SSO_CLIENT_SECRET="dCOWTcxFlRdeGnJZ1kRmGq41F25HB7jIFX1iHgde"
+   APTIKA_SSO_CLIENT_SECRET="isi-secret-dari-layanan-sso"
    APTIKA_SSO_APP_URL="https://dev1.gorontaloprov.go.id"
    ```
 
